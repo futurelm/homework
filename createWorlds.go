@@ -8,11 +8,11 @@ import (
 )
 
 var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-// 字符串数量
+// words total count
 var wordCount = 50000000
-// 字符串最大长度
+//  max length for one word
 var wordLength = 20
-//每行字符串数量(每行大小)
+// words total count in line
 var countInLine = 100
 
 func randSeq(n int) string {
@@ -24,8 +24,6 @@ func randSeq(n int) string {
 }
 
 func createWolrds() {
-	// 1000万个字符串，长度1-20, 一行1000个 115.MB
-	// 1亿个字符串，长度1-20, 一行1000个 1.15GB 58s
 
 	file, err := os.OpenFile("words.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 
