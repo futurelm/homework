@@ -17,10 +17,10 @@
  
  使用
  -------
- ```bash                             
-  ## 创建一个随机字符串文件，words.txt
-  go test -v createWorlds_test.go createWorlds.go  
-  ## 扫描文件，输出结果
-  go test -v find_non_repeated_string_test.go find_non_repeated_string.go 
+ ```                              
+  ## build 
+  go build .   
+  ## run 
+  ./homework -file words.txt -count 10
  ```
 
