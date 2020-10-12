@@ -9,17 +9,17 @@
 
 思路：
 --------
- 1. 创建一个长度为`n`的有缓冲channel，缓冲长度`m`数组，开启一个协程，按行扫描文件，把每个字符串c存入根
-据字符串哈希值对`n`取余得到的channel中。另一个协程遍历channel数组，分别从每个channel中过滤出非重复的字符串，统
- 一写入另一个channel `final channel`,最后在`final channel`中就是所有不重复的词，然后挑选索引最小的返回
- 2. 可以调整channel数组长度 `n`，channel 缓冲区大小 `m`的值, 在读文件使用scanner时指定buffer size。
- 限制内存使用
- 
+1. 把大文件切割成若干小文件， 保证每个小文件大小不超过内存限制
+2. 读取字符串同时记录索引， 根据字符串哈希值取余选择一个文件，写入 "字符串|索引\n"
+3. 依次读取文件，利用hashmap,key记录字符串，value保存出现的次数和索引，遍历map取出次数为1并且索引最小的字符串
+   即为第一个不重复的词
+
  使用
  -------
- ```                              
+ ```shell script                            
   ## build 
   go build .   
+
   ## run 
   ./homework -file words.txt -count 10
  ```
