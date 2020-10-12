@@ -92,7 +92,7 @@ func readFileToWordMap(filePath string) map[string]wordMeta {
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
 		value := strings.Split(string(scanner.Bytes()), "|")
-		ind, err := strconv.ParseInt(strings.Trim(value[1], " "), 10, 64)
+		ind, err := strconv.ParseInt(value[1], 10, 64)
 		if err != nil {
 			log.Print(err)
 		}
